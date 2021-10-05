@@ -5,24 +5,23 @@
     const url = "Kunde/HentEn?" + id;
     $.get(url, function (kunde) {
         $("#id").val(kunde.id); // må ha med id inn skjemaet, hidden i html
-        $("#navn").val(kunde.navn);
+        $("#fornavn").val(kunde.fornavn);
+        $("#etternavn").val(kunde.etternavn);
         $("#adresse").val(kunde.adresse);
-        //$("#tlf").val(kunde.tlf);
-        //$("#antall").val(kunde.antall);
+        $("#postnr").val(kunde.postnr);
+        $("#poststed").val(kunde.poststed);
     });
 });
-
 
 function endreKunde() {
     const kunde = {
         id: $("#id").val(), // må ha med denne som ikke har blitt endret for å vite hvilken kunde som skal endres
-        navn: $("#navn").val(),
+        fornavn: $("#fornavn").val(),
+        etternavn: $("#etternavn").val(),
         adresse: $("#adresse").val(),
-        //tlf: $("#tlf").val(),
-        //antall: $("#antall").val()
-        //tlf: $("#tlf").val()  
-    }
-    console.log(kunde);
+        postnr: $("#postnr").val(),
+        poststed: $("#poststed").val()
+    };
     $.post("Kunde/Endre", kunde, function (OK) {
         if (OK) {
             window.location.href = 'index.html';

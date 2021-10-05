@@ -8,10 +8,10 @@ namespace MappeInnlevering_1.Models
     public class Kunde
     {
         public int Id { get; set; }
-        public string navn { get; set; }
-        public string adresse { get; set; }
-        //public string tlf { get; set; }
-
-        //public int antall { get; set; }
+        public string Fornavn { get; set; }
+        public string Etternavn { get; set; }
+        public string Adresse { get; set; }
+        public string Postnr { get; set; }
+        public string Poststed { get; set; }
     }
 }

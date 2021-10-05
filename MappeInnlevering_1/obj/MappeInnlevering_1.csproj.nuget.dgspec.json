@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Suhai\\ITPE3200MappeInnlevering_1\\MappeInnlevering_1\\MappeInnlevering_1.csproj": {}
+    "C:\\Users\\Suhai\\webapp_mappeinnlevering1\\MappeInnlevering_1\\MappeInnlevering_1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Suhai\\ITPE3200MappeInnlevering_1\\MappeInnlevering_1\\MappeInnlevering_1.csproj": {
+    "C:\\Users\\Suhai\\webapp_mappeinnlevering1\\MappeInnlevering_1\\MappeInnlevering_1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Suhai\\ITPE3200MappeInnlevering_1\\MappeInnlevering_1\\MappeInnlevering_1.csproj",
+        "projectUniqueName": "C:\\Users\\Suhai\\webapp_mappeinnlevering1\\MappeInnlevering_1\\MappeInnlevering_1.csproj",
         "projectName": "MappeInnlevering_1",
-        "projectPath": "C:\\Users\\Suhai\\ITPE3200MappeInnlevering_1\\MappeInnlevering_1\\MappeInnlevering_1.csproj",
+        "projectPath": "C:\\Users\\Suhai\\webapp_mappeinnlevering1\\MappeInnlevering_1\\MappeInnlevering_1.csproj",
         "packagesPath": "C:\\Users\\Suhai\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Suhai\\ITPE3200MappeInnlevering_1\\MappeInnlevering_1\\obj\\",
+        "outputPath": "C:\\Users\\Suhai\\webapp_mappeinnlevering1\\MappeInnlevering_1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -47,6 +47,10 @@
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
               "version": "[3.1.4, )"
             },

@@ -22,7 +22,24 @@ namespace MappeInnlevering_1.Controllers
         {
             try
             {
-                _DB.Kunder.Add(innKunde);
+                var nyKundeRad = new Kunder();
+                nyKundeRad.Fornavn = innKunde.Fornavn;
+                nyKundeRad.Etternavn = innKunde.Etternavn;
+                nyKundeRad.Adresse = innKunde.Adresse;
+
+                var sjekkPoststed = await _DB.Poststeder.FindAsync(innKunde.Postnr);
+                if (sjekkPoststed == null)
+                {
+                    var poststedsRad = new Poststeder();
+                    poststedsRad.Postnr = innKunde.Postnr;
+                    poststedsRad.Poststed = innKunde.Poststed;
+                    nyKundeRad.Poststed = poststedsRad;
+                }
+                else
+                {
+                    nyKundeRad.Poststed = sjekkPoststed;
+                }
+                _DB.Kunder.Add(nyKundeRad);
                 await _DB.SaveChangesAsync();
                 return true;
             }
@@ -37,8 +54,16 @@ namespace MappeInnlevering_1.Controllers
         {
             try
             {
-                List<Kunde> alleKundene = await _DB.Kunder.ToListAsync();
-                return alleKundene;
+                List<Kunde> alleKunder = await _DB.Kunder.Select(k => new Kunde
+                {
+                    Id = k.Id,
+                    Fornavn = k.Fornavn,
+                    Etternavn = k.Etternavn,
+                    Adresse = k.Adresse,
+                    Postnr = k.Poststed.Postnr,
+                    Poststed = k.Poststed.Poststed
+                }).ToListAsync();
+                return alleKunder;
             }
             catch
             {
@@ -50,10 +75,10 @@ namespace MappeInnlevering_1.Controllers
         {
             try
             {
-                Kunde enKunde = await _DB.Kunder.FindAsync(id);
+                Kunder enKunde = await _DB.Kunder.FindAsync(id);
                 _DB.Kunder.Remove(enKunde);
                 await _DB.SaveChangesAsync();
-                return true; 
+                return true;
             }
             catch
             {
@@ -66,8 +91,17 @@ namespace MappeInnlevering_1.Controllers
         {
             try
             {
-                Kunde enKunde = await _DB.Kunder.FindAsync(id);
-                return enKunde;
+                Kunder enKunde = await _DB.Kunder.FindAsync(id);
+                var hentetKunde = new Kunde()
+                {
+                    Id = enKunde.Id,
+                    Fornavn = enKunde.Fornavn,
+                    Etternavn = enKunde.Etternavn,
+                    Adresse = enKunde.Adresse,
+                    Postnr = enKunde.Poststed.Postnr,
+                    Poststed = enKunde.Poststed.Poststed
+                };
+                return hentetKunde;
             }
             catch
             {
@@ -79,18 +113,32 @@ namespace MappeInnlevering_1.Controllers
         {
             try
             {
-                Kunde enKunde = await _DB.Kunder.FindAsync(endreKunde.Id);
-                enKunde.navn = endreKunde.navn;
-                enKunde.adresse = endreKunde.adresse;
-                //enKunde.tlf = endreKunde.tlf;
-                //enKunde.antall = endreKunde.antall;
+                var endreObjekt = await _DB.Kunder.FindAsync(endreKunde.Id);
+                if (endreObjekt.Poststed.Postnr != endreKunde.Postnr)
+                {
+                    var sjekkPostnr = _DB.Poststeder.Find(endreKunde.Postnr);
+                    if (sjekkPostnr == null)
+                    {
+                        var poststedsRad = new Poststeder();
+                        poststedsRad.Postnr = endreKunde.Postnr;
+                        poststedsRad.Poststed = endreKunde.Poststed;
+                        endreObjekt.Poststed = poststedsRad;
+                    }
+                    else
+                    {
+                        endreObjekt.Poststed.Postnr = endreKunde.Postnr;
+                    }
+                }
+                endreObjekt.Fornavn = endreKunde.Fornavn;
+                endreObjekt.Etternavn = endreKunde.Etternavn;
+                endreObjekt.Adresse = endreKunde.Adresse;
                 await _DB.SaveChangesAsync();
-                return true;
             }
             catch
             {
                 return false;
             }
+            return true;
         }
     }
 }
