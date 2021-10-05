@@ -17,10 +17,10 @@ namespace MappeInnlevering_1.Models
 
         public string Email { get; set; }
 
-        virtual public Poststeder Poststed { get; set; } //skriver virtual for å få med Poststeder klassen
+        virtual public Ordre Poststed { get; set; } //skriver virtual for å få med Poststeder klassen
     }
 
-    public class Poststeder
+    public class Ordre
     {
         [Key] //generert en autoinkrement automatisk
         [DatabaseGenerated(DatabaseGeneratedOption.None)] //Sikrer at vi ike får autoinkrement på den
@@ -37,7 +37,7 @@ namespace MappeInnlevering_1.Models
         }
 
         public DbSet<Kunder> Kunder { get; set; }
-        public DbSet<Poststeder> Poststeder { get; set; }
+        public DbSet<Ordre> Poststeder { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

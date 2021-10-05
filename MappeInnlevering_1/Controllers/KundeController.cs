@@ -31,7 +31,7 @@ namespace MappeInnlevering_1.Controllers
                 var sjekkPoststed = await _DB.Poststeder.FindAsync(innKunde.Postnr);
                 if (sjekkPoststed == null)
                 {
-                    var poststedsRad = new Poststeder();
+                    var poststedsRad = new Ordre();
                     poststedsRad.Postnr = innKunde.Postnr;
                     poststedsRad.Poststed = innKunde.Poststed;
                     nyKundeRad.Poststed = poststedsRad;
@@ -126,7 +126,7 @@ namespace MappeInnlevering_1.Controllers
                     var sjekkPostnr = _DB.Poststeder.Find(endreKunde.Postnr);
                     if (sjekkPostnr == null)
                     {
-                        var poststedsRad = new Poststeder();
+                        var poststedsRad = new Ordre();
                         poststedsRad.Postnr = endreKunde.Postnr;
                         poststedsRad.Poststed = endreKunde.Poststed;
                         endreObjekt.Poststed = poststedsRad;
