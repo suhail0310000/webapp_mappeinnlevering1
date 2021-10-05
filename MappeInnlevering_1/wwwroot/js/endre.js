@@ -8,6 +8,7 @@
         $("#fornavn").val(kunde.fornavn);
         $("#etternavn").val(kunde.etternavn);
         $("#adresse").val(kunde.adresse);
+        $("#email").val(kunde.email);
         $("#postnr").val(kunde.postnr);
         $("#poststed").val(kunde.poststed);
     });
@@ -19,6 +20,7 @@ function endreKunde() {
         fornavn: $("#fornavn").val(),
         etternavn: $("#etternavn").val(),
         adresse: $("#adresse").val(),
+        email: $("#email").val(),
         postnr: $("#postnr").val(),
         poststed: $("#poststed").val()
     };

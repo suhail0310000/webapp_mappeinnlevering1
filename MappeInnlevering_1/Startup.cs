@@ -35,6 +35,7 @@ namespace MappeInnlevering_1
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                DBInit.Initialize(app);
             }
             else
             {

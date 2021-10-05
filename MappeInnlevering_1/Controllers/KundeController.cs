@@ -18,7 +18,7 @@ namespace MappeInnlevering_1.Controllers
             _DB = Db;
         }
 
-        public async Task<bool> Lagre(Kunde innKunde)
+        public async Task<bool> Lagre(KundeOrdre innKunde)
         {
             try
             {
@@ -26,6 +26,7 @@ namespace MappeInnlevering_1.Controllers
                 nyKundeRad.Fornavn = innKunde.Fornavn;
                 nyKundeRad.Etternavn = innKunde.Etternavn;
                 nyKundeRad.Adresse = innKunde.Adresse;
+                nyKundeRad.Email = innKunde.Adresse;
 
                 var sjekkPoststed = await _DB.Poststeder.FindAsync(innKunde.Postnr);
                 if (sjekkPoststed == null)
@@ -50,19 +51,24 @@ namespace MappeInnlevering_1.Controllers
         }
 
 
-        public async Task<List<Kunde>> HentAlle()
+        public async Task<List<KundeOrdre>> HentAlle()
         {
             try
             {
-                List<Kunde> alleKunder = await _DB.Kunder.Select(k => new Kunde
+                List<KundeOrdre> alleKunder = await _DB.Kunder.Select(k => new KundeOrdre
                 {
                     Id = k.Id,
                     Fornavn = k.Fornavn,
                     Etternavn = k.Etternavn,
                     Adresse = k.Adresse,
+                    Email = k.Email,
                     Postnr = k.Poststed.Postnr,
                     Poststed = k.Poststed.Poststed
                 }).ToListAsync();
+                //foreach (var i in alleKunder)
+                //{
+                //    System.Diagnostics.Debug.WriteLine(i.Fornavn);
+                //}
                 return alleKunder;
             }
             catch
@@ -87,17 +93,18 @@ namespace MappeInnlevering_1.Controllers
         }
 
 
-        public async Task<Kunde> HentEn(int id)
+        public async Task<KundeOrdre> HentEn(int id)
         {
             try
             {
                 Kunder enKunde = await _DB.Kunder.FindAsync(id);
-                var hentetKunde = new Kunde()
+                var hentetKunde = new KundeOrdre()
                 {
                     Id = enKunde.Id,
                     Fornavn = enKunde.Fornavn,
                     Etternavn = enKunde.Etternavn,
                     Adresse = enKunde.Adresse,
+                    Email = enKunde.Email,
                     Postnr = enKunde.Poststed.Postnr,
                     Poststed = enKunde.Poststed.Poststed
                 };
@@ -109,7 +116,7 @@ namespace MappeInnlevering_1.Controllers
             }
         }
 
-        public async Task<bool> Endre(Kunde endreKunde)
+        public async Task<bool> Endre(KundeOrdre endreKunde)
         {
             try
             {
@@ -132,6 +139,7 @@ namespace MappeInnlevering_1.Controllers
                 endreObjekt.Fornavn = endreKunde.Fornavn;
                 endreObjekt.Etternavn = endreKunde.Etternavn;
                 endreObjekt.Adresse = endreKunde.Adresse;
+                endreObjekt.Email = endreKunde.Email;
                 await _DB.SaveChangesAsync();
             }
             catch

@@ -15,6 +15,8 @@ namespace MappeInnlevering_1.Models
         public string Etternavn { get; set; }
         public string Adresse { get; set; }
 
+        public string Email { get; set; }
+
         virtual public Poststeder Poststed { get; set; } //skriver virtual for å få med Poststeder klassen
     }
 
@@ -31,7 +33,6 @@ namespace MappeInnlevering_1.Models
     {
         public DB(DbContextOptions<DB> options) : base(options)
         {
-            //Kundeapp
             Database.EnsureCreated();
         }
 
