@@ -1,24 +1,24 @@
 ﻿$(function () {
     hentAlleKunder();
 });
-
+//console.log(hentAlleKunder());
 function hentAlleKunder() {
     $.get("kunde/hentAlle", function (kunder) {
         formaterKunder(kunder);
-        console.log("Kunder"+kunder);
+        console.log("Kunder" + kunder);
     });
 }
 
 function formaterKunder(kunder) {
     let ut = "<table class='table table-striped'>" +
         "<tr>" +
-        "<th>Fornavn</th><th>Etternavn</th><th>Adresse</th><th>Email</th><th>Postnr</th><th>Poststed</th><th></th><th></th>" +
+        "<th>Fornavn</th><th>Etternavn</th><th>Email</th><th>Postnr</th><th>Poststed</th><th></th><th></th>" +
         "</tr>";
     for (let kunde of kunder) {
+        console.log(kunde.FraSted)
         ut += "<tr>" +
             "<td>" + kunde.fornavn + "</td>" +
             "<td>" + kunde.etternavn + "</td>" +
-            "<td>" + kunde.adresse + "</td>" +
             "<td>" + kunde.email+ "</td>" +
             "<td>" + kunde.postnr + "</td>" +
             "<td>" + kunde.poststed + "</td>" +

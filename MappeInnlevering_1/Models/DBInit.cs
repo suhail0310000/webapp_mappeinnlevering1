@@ -19,14 +19,30 @@ namespace MappeInnlevering_1.Models
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
 
-                var poststed1 = new Ordre { Postnr = "0270", Poststed = "Oslo" };
-                var poststed2 = new Ordre { Postnr = "1370", Poststed = "Asker" };
+                var datoAvgang1 = "05/11/2021";
+                //var datoAvgang2 = "10/12/2021";
+                //var dato3 = "01/01/2021";
 
-                var kunde1 = new Kunder { Fornavn = "Ole", Etternavn = "Hansen", Adresse = "Olsloveien 82", Email="Email1", Poststed = poststed1 };
-                var kunde2 = new Kunder { Fornavn = "Line", Etternavn = "Jensen", Adresse = "Askerveien 72", Email = "Email2", Poststed = poststed2 };
+                var tid_1 = "10:00";
+                //var tid_2 = "13:00";
+                //var tid_3 = "21:00";
 
-                context.Kunder.Add(kunde1);
-                context.Kunder.Add(kunde2);
+                var land1 = "Tyskland";
+                var land2 = "Spania";
+
+                var reise1 = new Reise { FraSted = land1, TilSted = land2, Dato = datoAvgang1, avreiseTid= tid_1,  PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
+
+                //var Ordre1 = new Ordre { AntallBarn = 1, AntallStudent= 1, AntallVoksne = 1, TotalPris= 100 };
+                //var Ordre2 = new Ordre { AntallBarn = 1, AntallStudent = 1, AntallVoksne = 1, TotalPris = 100 };
+
+
+
+
+                //var kunde1 = new Kunder { Fornavn = "Ole", Etternavn = "Hansen",  Ordre = Ordre1 };
+                //var kunde2 = new Kunder { Fornavn = "Line", Etternavn = "Jensen",  Email = "Email2", Poststed = poststed2 };
+
+                context.Reiser.Add(reise1);
+                //context.Kunder.Add(kunde2);
 
                 context.SaveChanges();
             }

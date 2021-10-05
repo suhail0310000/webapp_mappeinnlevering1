@@ -13,21 +13,36 @@ namespace MappeInnlevering_1.Models
         public int Id { get; set; }
         public string Fornavn { get; set; }
         public string Etternavn { get; set; }
-        public string Adresse { get; set; }
-
-        public string Email { get; set; }
-
-        virtual public Ordre Poststed { get; set; } //skriver virtual for å få med Poststeder klassen
+        virtual public Ordre Ordre { get; set; } //skriver virtual for å få med Poststeder klassen
     }
 
     public class Ordre
     {
         [Key] //generert en autoinkrement automatisk
         [DatabaseGenerated(DatabaseGeneratedOption.None)] //Sikrer at vi ike får autoinkrement på den
-        public string Postnr { get; set; }
+        public int AntallBarn { get; set; }
+        public int AntallStudent { get; set; }
+        public int AntallVoksne { get; set; }
+        public double TotalPris { get; set; }
 
-        public string Poststed { get; set; }
+        //virtual public Kunder Kunde { get; set; }
+
     }
+
+    //public class Reise
+    //{
+    //    [Key] //generert en autoinkrement automatisk
+    //    [DatabaseGenerated(DatabaseGeneratedOption.None)] //Sikrer at vi ike får autoinkrement på den
+    //    public string FraSted { get; set; }
+    //    public string TilSted { get; set; }
+    //    public string Dato { get; set; }
+
+    //    public string Tid { get; set; }
+    //    public double PrisBarn { get; set; }
+    //    public double PrisVoksen { get; set; }
+    //    public double PrisStudent { get; set; }
+
+    //}
 
     public class DB : DbContext
     {
@@ -38,6 +53,8 @@ namespace MappeInnlevering_1.Models
 
         public DbSet<Kunder> Kunder { get; set; }
         public DbSet<Ordre> Poststeder { get; set; }
+
+        public DbSet<Reise> Reiser { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

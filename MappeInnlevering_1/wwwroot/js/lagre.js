@@ -2,7 +2,6 @@
     const kunde = {
         fornavn: $("#fornavn").val(),
         etternavn: $("#etternavn").val(),
-        adresse: $("#adresse").val(),
         email: $("#email").val(),
         postnr: $("#postnr").val(),
         poststed: $("#poststed").val()

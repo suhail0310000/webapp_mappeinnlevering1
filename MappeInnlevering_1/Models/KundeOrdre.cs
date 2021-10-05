@@ -11,9 +11,22 @@ namespace MappeInnlevering_1.Models
         public string Fornavn { get; set; }
         public string Etternavn { get; set; }
 
-        public string Email { get; set; }
-        public string Adresse { get; set; }
-        public string Postnr { get; set; }
-        public string Poststed { get; set; }
+        public int AntallBarn { get; set; }
+
+        public int AntallStudent { get; set; }
+
+        public int AntallVoksne { get; set; }
+
+        public string Dato { get; set; }
+
+        public string Tid { get; set; }
+
+        //public double PrisBarn { get; set; }
+
+        //public double PrisVoksen { get; set; }
+
+        //public string FraSted { get; set; }
+
+        //public string TilSted { get; set; }
     }
 }

@@ -7,7 +7,6 @@
         $("#id").val(kunde.id); // må ha med id inn skjemaet, hidden i html
         $("#fornavn").val(kunde.fornavn);
         $("#etternavn").val(kunde.etternavn);
-        $("#adresse").val(kunde.adresse);
         $("#email").val(kunde.email);
         $("#postnr").val(kunde.postnr);
         $("#poststed").val(kunde.poststed);
@@ -19,7 +18,6 @@ function endreKunde() {
         id: $("#id").val(), // må ha med denne som ikke har blitt endret for å vite hvilken kunde som skal endres
         fornavn: $("#fornavn").val(),
         etternavn: $("#etternavn").val(),
-        adresse: $("#adresse").val(),
         email: $("#email").val(),
         postnr: $("#postnr").val(),
         poststed: $("#poststed").val()
