@@ -1,6 +1,6 @@
 ﻿.section {
     position: relative;
-    height: 100vh;
+    height: 91.2vh;
 }
 
 .section .section-center {
@@ -14,7 +14,7 @@
 
 #booking {
     font-family: 'Montserrat', sans-serif;
-    background-image: url('baat.jpeg');
+    background-image: url('../cruise3.jpeg');
     background-size: cover;
     background-position: center;
 }
@@ -131,4 +131,8 @@
     display: block;
     border-radius: 3px;
     text-transform: uppercase;
+}
+
+.navbar navbar-default{
+    
 }

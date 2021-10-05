@@ -1,29 +1,30 @@
 ﻿<Properties StartupConfiguration="{CE3A47E4-6A59-4810-93A8-1B4BE3C4024C}|Default">
   <MonoDevelop.Ide.ItemProperties.MappeInnlevering__1 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/KundeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="wwwroot/hjem.html">
     <Files>
       <File FileName="Models/Kunde.cs" Line="7" Column="2" />
-      <File FileName="Properties/launchSettings.json" />
+      <File FileName="Properties/launchSettings.json" Line="22" Column="25" />
       <File FileName="Models/DB.cs" />
       <File FileName="wwwroot/Kvittering.html" />
       <File FileName="wwwroot/index.html" Line="1" Column="1" />
       <File FileName="wwwroot/lagre.html" />
-      <File FileName="wwwroot/css/style.css" Line="17" Column="34" />
-      <File FileName="wwwroot/hjem.html" Line="20" Column="1" />
-      <File FileName="Controllers/KundeController.cs" Line="1" Column="1" />
+      <File FileName="wwwroot/css/style.css" Line="18" Column="20" />
+      <File FileName="wwwroot/hjem.html" Line="147" Column="70" />
+      <File FileName="Controllers/KundeController.cs" />
+      <File FileName="wwwroot/info.html" />
+      <File FileName="wwwroot/endre.html" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="MappeInnlevering_1" expanded="True">
             <Node name="MappeInnlevering_1" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="KundeController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
+                <Node name="hjem.html" selected="True" />
               </Node>
             </Node>
           </Node>
