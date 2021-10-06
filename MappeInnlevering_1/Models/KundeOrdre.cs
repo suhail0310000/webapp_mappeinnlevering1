@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,7 +8,7 @@ namespace MappeInnlevering_1.Models
 {
     public class KundeOrdre
     {
-        public int Id { get; set; }
+        [Key]
         public string Fornavn { get; set; }
         public string Etternavn { get; set; }
 

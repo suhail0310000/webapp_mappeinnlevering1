@@ -15,10 +15,13 @@ namespace MappeInnlevering_1.Models
             {
                 var context = serviceScope.ServiceProvider.GetService<DB>();
 
-                // må slette og opprette databasen hver gang når den skalinitieres (seed`es)
+                // Oppretter og sletter databasen hver gang den skal seedes
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
 
+                //var sted = new Sted { StedsNavn= "Suhail " };
+
+               
                 var datoAvgang1 = "05/11/2021";
                 //var datoAvgang2 = "10/12/2021";
                 //var dato3 = "01/01/2021";
@@ -41,7 +44,7 @@ namespace MappeInnlevering_1.Models
                 //var kunde1 = new Kunder { Fornavn = "Ole", Etternavn = "Hansen",  Ordre = Ordre1 };
                 //var kunde2 = new Kunder { Fornavn = "Line", Etternavn = "Jensen",  Email = "Email2", Poststed = poststed2 };
 
-                context.Reiser.Add(reise1);
+                //context.Reiser.Add(reise1);
                 //context.Kunder.Add(kunde2);
 
                 context.SaveChanges();

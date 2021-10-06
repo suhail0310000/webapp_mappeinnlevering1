@@ -10,40 +10,52 @@ namespace MappeInnlevering_1.Models
 {
     public class Kunder
     {
-        public int Id { get; set; }
+        [Key]
+        public int KId { get; set; }
         public string Fornavn { get; set; }
         public string Etternavn { get; set; }
-        virtual public Ordre Ordre { get; set; } //skriver virtual for å få med Poststeder klassen
+         //skriver virtual for å få med Poststeder klassen
     }
 
     public class Ordre
     {
         [Key] //generert en autoinkrement automatisk
-        [DatabaseGenerated(DatabaseGeneratedOption.None)] //Sikrer at vi ike får autoinkrement på den
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)] //Sikrer at vi ike får autoinkrement på den
+        public int OId { get; set; }
         public int AntallBarn { get; set; }
         public int AntallStudent { get; set; }
         public int AntallVoksne { get; set; }
         public double TotalPris { get; set; }
 
+        virtual public Kunder Kunder  { get; set; }
+        virtual public Reiser Reiser { get; set; }
+
         //virtual public Kunder Kunde { get; set; }
 
     }
 
-    //public class Reise
-    //{
-    //    [Key] //generert en autoinkrement automatisk
-    //    [DatabaseGenerated(DatabaseGeneratedOption.None)] //Sikrer at vi ike får autoinkrement på den
-    //    public string FraSted { get; set; }
-    //    public string TilSted { get; set; }
-    //    public string Dato { get; set; }
+    public class Reiser
+    {
+        [Key] //generert en autoinkrement automatisk
+        public int RId { get; set; }
+        public virtual Sted FraSted { get; set; }
+        public virtual Sted TilSted { get; set; }
+        public string Dato { get; set; }
+        public string Tid { get; set; }
+        public double PrisBarn { get; set; }
+        public double PrisVoksen { get; set; }
+        public double PrisStudent { get; set; }
 
-    //    public string Tid { get; set; }
-    //    public double PrisBarn { get; set; }
-    //    public double PrisVoksen { get; set; }
-    //    public double PrisStudent { get; set; }
+    }
 
-    //}
+    public class Sted
+    {
+        [Key]
+        public int SId { get; set; }
 
+        public string StedsNavn { get; set; }
+
+    }
     public class DB : DbContext
     {
         public DB(DbContextOptions<DB> options) : base(options)
@@ -52,9 +64,11 @@ namespace MappeInnlevering_1.Models
         }
 
         public DbSet<Kunder> Kunder { get; set; }
-        public DbSet<Ordre> Poststeder { get; set; }
+        public DbSet<Ordre> Ordre { get; set; }
 
-        public DbSet<Reise> Reiser { get; set; }
+        public DbSet<Reiser> Reiser { get; set; }
+
+        public DbSet<Sted> Steder { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

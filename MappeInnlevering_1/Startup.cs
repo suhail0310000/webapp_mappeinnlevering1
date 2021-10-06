@@ -1,3 +1,4 @@
+using MappeInnlevering_1.DAL;
 using MappeInnlevering_1.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +28,7 @@ namespace MappeInnlevering_1
         {
             services.AddControllers();
             services.AddDbContext<DB>(options => options.UseSqlite("Data source= DB.db"));
+            services.AddScoped<IKundeOrdreRepository, KundeOrdreRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

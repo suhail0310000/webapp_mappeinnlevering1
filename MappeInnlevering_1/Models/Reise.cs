@@ -13,7 +13,6 @@ namespace MappeInnlevering_1.Models
         public string FraSted { get; set; }
         public string TilSted { get; set; }
         public string Dato { get; set; }
-
         public string avreiseTid { get; set; }
         public int PrisBarn { get; set; }
         public int PrisStudent { get; set; }

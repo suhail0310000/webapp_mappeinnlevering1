@@ -5,18 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using MappeInnlevering_1.Models;
 using Microsoft.EntityFrameworkCore;
+using MappeInnlevering_1.DAL;
 
 namespace MappeInnlevering_1.Controllers
 {
     [Route("[controller]/[action]")]
     public class KundeController : ControllerBase
     {
-        private readonly DB _DB;
+        private readonly IKundeOrdreRepository _DB;
 
-        public KundeController(DB Db)
+        public KundeController(IKundeOrdreRepository Db)
         {
             _DB = Db;
         }
+
+        public async Task<List<Reiser>> HentAlle()
+        {
+            return await _DB.HentAlle();
+        }
+
 
         //public async Task<bool> Lagre(KundeOrdre innKunde)
         //{
@@ -79,15 +86,15 @@ namespace MappeInnlevering_1.Controllers
         //}
 
         //Versjon2-> test
-        public async Task<List<Reise>> HentAlle()
-        {
-            List<Reise> alleTurer = await _DB.Reiser.ToListAsync();
-            foreach (var i in alleTurer)
-            {
-                System.Diagnostics.Debug.WriteLine(i.FraSted);
-            }
-            return alleTurer;
-        }
+        //public async Task<List<Reise>> HentAlle()
+        //{
+        //    List<Reise> alleTurer = await _DB.Reiser.ToListAsync();
+        //    foreach (var i in alleTurer)
+        //    {
+        //        System.Diagnostics.Debug.WriteLine(i.FraSted);
+        //    }
+        //    return alleTurer;
+        //}
 
         //public async Task<bool> Slett(int id)
         //{
