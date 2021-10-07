@@ -1,18 +1,9 @@
 ﻿$(function () {
     //hentAlleReiser();
     HentAlleSteder();
+    TotalPrisBilett()
 });
-//console.log(hentAlleKunder());
-//function hentAlleReiser() {
-//    $.get("kunde/GetAlleReiser", function (Reiser) {
-//        console.log(Reiser);
-//        for (let reise of Reiser) {
-//            console.log(reise.fraSted.stedsNavn);
-//        }
-//        //formaterKunder(kunder);
-//        //console.log("Kunder" + kunder);
-//    });
-//}
+
 
 function HentAlleSteder() {
     $.get("kunde/GetAllSteder", function (Steder) {
@@ -78,25 +69,25 @@ function displayDato() {
     console.log("Avgangval: " + avgangVal);
     console.log("destinasjonVal: " + destinasjonVal);
     const url = "kunde/GetAlleReiser";
-    $.get(url, function (turer) {
-        if (turer) {
+    $.get(url, function (reiser) {
+        if (reiser) {
             /*let ut = "<label>Velg tidspunkt</label>";*/
             /*let ut = "<select class='form-control' onchange='GetAllDestinasjoner()' id='selectAvgang'> ";*/
 
             let ut = "<select class='form-control' id='selectDato' onchange='displayTid()'>";
             ut += "<option>Velg dato: </option>";
-            for (let tur of turer) {
+            for (let reise of reiser) {
                 //console.log(tur);
                 //console.log(tur.tid);
                 console.log("Inne i dato funksjon:");
-                console.log("Avgang"+tur.fraSted.stedsNavn);
-                console.log("Destinasjon"+tur.tilSted.stedsNavn);
+                console.log("Avgang"+reise.fraSted.stedsNavn);
+                console.log("Destinasjon"+reise.tilSted.stedsNavn);
 
                /* ut += "<option>" + tur.tid + "</option>";*/
  
-                if (avgangVal === tur.fraSted.stedsNavn && destinasjonVal === tur.tilSted.stedsNavn) {
+                if (avgangVal === reise.fraSted.stedsNavn && destinasjonVal === reise.tilSted.stedsNavn) {
 
-                    ut += "<option>" + tur.dato + "</option>";
+                    ut += "<option>" + reise.dato + "</option>";
                 }
             }
             ut += "</select>";
@@ -127,22 +118,22 @@ function displayTid() {
     console.log("destinasjonVal: " + destinasjonVal);
     console.log("DatoVal: " + datoVal);
     const url = "kunde/GetAlleReiser";
-    $.get(url, function (turer) {
-        if (turer) {
+    $.get(url, function (reiser) {
+        if (reiser) {
             /*let ut = "<label>Velg tidspunkt</label>";*/
             /*let ut = "<select class='form-control' onchange='GetAllDestinasjoner()' id='selectAvgang'> ";*/
 
             let ut = "<select class='form-control' id='selectTid' onchange='displayBiletter()'>";
             ut += "<option>Velg dato: </option>";
-            for (let tur of turer) {
+            for (let reise of reiser) {
                 //console.log(tur.tid);
-                console.log("Avgang " + tur.fraSted.stedsNavn);
-                console.log("Destinasjon: " + tur.tilSted.stedsNavn);
-                console.log("Avreisedato: " + tur.dato);
+                console.log("Avgang " + reise.fraSted.stedsNavn);
+                console.log("Destinasjon: " + reise.tilSted.stedsNavn);
+                console.log("Avreisedato: " + reise.dato);
 
                 /* ut += "<option>" + tur.tid + "</option>";*/
-                if (avgangVal === tur.fraSted.stedsNavn && destinasjonVal === tur.tilSted.stedsNavn && datoVal === tur.dato) {
-                    ut += "<option>" + tur.tid + "</option>";
+                if (avgangVal === reise.fraSted.stedsNavn && destinasjonVal === reise.tilSted.stedsNavn && datoVal === reise.dato) {
+                    ut += "<option>" + reise.tid + "</option>";
                 }
             }
             ut += "</select>";
@@ -172,22 +163,22 @@ function displayBiletter() {
     console.log("DatoVal: " + datoVal);
     console.log("Tid: " + tidVal);
     const url = "kunde/GetAlleReiser";
-    $.get(url, function (turer) {
-        if (turer) {
+    $.get(url, function (reiser) {
+        if (reiser) {
             /*let ut = "<label>Velg tidspunkt</label>";*/
             /*let ut = "<select class='form-control' onchange='GetAllDestinasjoner()' id='selectAvgang'> ";*/
 
             let ut = "<select class='form-control' id='selectTid'>";
             ut += "<option>Velg dato: </option>";
-            for (let tur of turer) {
+            for (let reise of reiser) {
                 //console.log(tur.tid);
-                console.log("Avgang " + tur.fraSted.stedsNavn);
-                console.log("Destinasjon: " + tur.tilSted.stedsNavn);
-                console.log("Avreisedato: " + tur.dato);
-                console.log("AvreiseTid: " + tur.tid);
+                console.log("Avgang " + reise.fraSted.stedsNavn);
+                console.log("Destinasjon: " + reise.tilSted.stedsNavn);
+                console.log("Avreisedato: " + reise.dato);
+                console.log("AvreiseTid: " + reise.tid);
                 /* ut += "<option>" + tur.tid + "</option>";*/
-                if (avgangVal === tur.fraSted.stedsNavn && destinasjonVal === tur.tilSted.stedsNavn && datoVal === tur.dato) {
-                    ut += "<option>" + tur.tid + "</option>";
+                if (avgangVal === reise.fraSted.stedsNavn && destinasjonVal === reise.tilSted.stedsNavn && datoVal === reise.dato) {
+                    ut += "<option>" + reise.tid + "</option>";
                 }
             }
             ut += "</select>";
@@ -207,55 +198,20 @@ function displayBiletter() {
 }
 
 
+function TotalPrisBilett() {
+    let avgangVal = $('#selectAvgang option:selected').val();
+    let destinasjonVal = $('#selectDestinasjon option:selected').val();
+    let datoVal = $('#selectDato option:selected').val();
+    let tidVal = $('#selectTid option:selected').val();
+    let antBarn = $('#antBarnBiletter').val();
+    let antVoksne = $('#antStudentBiletter').val();
+    let antStudent = $('#antVoksenBiletter').val();
 
-//function displayDato() {
-//    console.log("display dato");
-//    let ut = "<input class='form-control' type='text' placeholder='(DD/MM/ÅÅÅÅ) -> 07.02.2021' onchange='listTidspunkt()' id='typeDato'>";
-//    $("#typeDato").html(ut);
-//}
+    console.log("Antbarn"+antBarn);
+    console.log("Ant voksen"+antVoksne);
+    console.log("Ant student"+antStudent);
 
-
-//function listTidspunkt() {
-//    console.log("starter tidspunkt");
-//    let avgangVal = $('#selectAvgang option:selected').val();
-//    let destinasjonVal = $('#selectDestinasjon option:selected').val();
-//    let datoVal = $('#typeDato').val();
-//    console.log("Avgangval: " + avgangVal);
-//    console.log("destinasjonVal: " + destinasjonVal);
-//    console.log("datoVal:"+datoVal);
-//    const url = "kunde/GetAlleReiser";
-//    $.get(url, function (turer) {
-//        if (turer) {
-//            /*let ut = "<label>Velg tidspunkt</label>";*/
-//            /*let ut = "<select class='form-control' onchange='GetAllDestinasjoner()' id='selectAvgang'> ";*/
-            
-//            let ut = "<select class='form-control' id='selectTid'>";
-//            ut += "<option>Velg startstasjon</option>";
-//            for (let tur of turer) {
-//                console.log(tur);
-//                console.log(tur.tid);
-
-//                ut += "<option>" + tur.tid + "</option>";
-
-//                //if (startstasjon === tur.startStasjon.stasjonsNavn && endestasjon === tur.endeStasjon.stasjonsNavn && dato === tur.dato) {
-//                //    ut += "<option>" + tur.tid + "</option>";
-//                //}
-//            }
-//            ut += "</select>";
-//            $("#selectTid").html(ut);
-//            if (document.getElementById('selectTid').options.length == 0) {
-//                console.log("skriv ut feil tid");
-//                $("#feilTid").html("Ingen tilgjengelige turer på valgt dato");
-//            }
-//            else {
-//                $("#feilTid").html("");
-//            }
-//        }
-//        else {
-//            $("#feil").html("Feil i db");
-//        }
-//    });
-//}
+}
 
 
 
@@ -264,39 +220,3 @@ function displayBiletter() {
 
 
 
-
-
-
-//function formaterKunder(kunder) {
-//    let ut = "<table class='table table-striped'>" +
-//        "<tr>" +
-//        "<th>Fornavn</th><th>Etternavn</th><th>Email</th><th>Postnr</th><th>Poststed</th><th></th><th></th>" +
-//        "</tr>";
-//    for (let kunde of kunder) {
-//        console.log(kunde.FraSted)
-//        ut += "<tr>" +
-//            "<td>" + kunde.fornavn + "</td>" +
-//            "<td>" + kunde.etternavn + "</td>" +
-//            "<td>" + kunde.email+ "</td>" +
-//            "<td>" + kunde.postnr + "</td>" +
-//            "<td>" + kunde.poststed + "</td>" +
-//            "<td> <a class='btn btn-primary' href='endre.html?id=" + kunde.id + "'>Endre</a></td>" +
-//            "<td> <button class='btn btn-danger' onclick='slettKunde(" + kunde.id + ")'>Slett</button></td>" +
-//            "</tr>";
-//    }
-//    ut += "</table>";
-//    $("#kundene").html(ut);
-//}
-
-//function slettKunde(id) {
-//    const url = "Kunde/Slett?id=" + id;
-//    $.get(url, function (OK) {
-//        if (OK) {
-//            window.location.href = 'index.html';
-//        }
-//        else {
-//            $("#feil").html("Feil i db - prøv igjen senere");
-//        }
-
-//    });
-//}
