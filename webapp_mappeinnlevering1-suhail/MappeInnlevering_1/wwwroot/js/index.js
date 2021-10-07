@@ -43,15 +43,15 @@ function formaterAvgang(Steder) {
 //Fungerer
 function GetAllDestinasjoner() {
     let avgang = $('#selectAvgang option:selected').val();
-    console.log("Startstasjon: "+avgang);
+    //console.log("Startstasjon: "+avgang);
     const url = "kunde/GetAllDestinasjoner?startStasjonsNavn=" + avgang;
     $.get(url, function (steder) {
         console.log(steder);
         if (steder) {
             const mapUniq = new Set(steder.map(e => JSON.stringify(e)));
             const destinasjonUnik = Array.from(mapUniq).map(e => JSON.parse(e));
-            console.log(destinasjonUnik);
-            console.log("Unike destinasjoner:    " + destinasjonUnik);
+            //console.log(destinasjonUnik);
+            //console.log("Unike destinasjoner:    " + destinasjonUnik);
 
             /*let ut = "<label>Jeg skal reise til</label>";*/
             /*onchange = 'listEndeStasjoner()'*/
@@ -73,36 +73,182 @@ function GetAllDestinasjoner() {
 
 
 function displayDato() {
-    console.log("display dato");
-    let ut = "<input class='form-control' type='text' placeholder='(DD/MM/ÅÅÅÅ) -> 07.02.2021' onchange='listTidspunkt()' id='typeDato'>";
-    $("#typeDato").html(ut);
+    let avgangVal = $('#selectAvgang option:selected').val();
+    let destinasjonVal = $('#selectDestinasjon option:selected').val();
+    console.log("Avgangval: " + avgangVal);
+    console.log("destinasjonVal: " + destinasjonVal);
+    const url = "kunde/GetAlleReiser";
+    $.get(url, function (turer) {
+        if (turer) {
+            /*let ut = "<label>Velg tidspunkt</label>";*/
+            /*let ut = "<select class='form-control' onchange='GetAllDestinasjoner()' id='selectAvgang'> ";*/
+
+            let ut = "<select class='form-control' id='selectDato' onchange='displayTid()'>";
+            ut += "<option>Velg dato: </option>";
+            for (let tur of turer) {
+                //console.log(tur);
+                //console.log(tur.tid);
+                console.log("Inne i dato funksjon:");
+                console.log("Avgang"+tur.fraSted.stedsNavn);
+                console.log("Destinasjon"+tur.tilSted.stedsNavn);
+
+               /* ut += "<option>" + tur.tid + "</option>";*/
+ 
+                if (avgangVal === tur.fraSted.stedsNavn && destinasjonVal === tur.tilSted.stedsNavn) {
+
+                    ut += "<option>" + tur.dato + "</option>";
+                }
+            }
+            ut += "</select>";
+            $("#selectDato").html(ut);
+            if (document.getElementById('selectDato').options.length == 0) {
+                $("#feilDato").html("Ingen tilgjengelige turer denne ruten");
+            }
+            else {
+                $("#feilDato").html("");
+            }
+        }
+        else {
+            $("#feil").html("Feil i db");
+        }
+    });
 }
+
+
+
+
+function displayTid() {
+    console.log("starter");
+    let avgangVal = $('#selectAvgang option:selected').val();
+    let destinasjonVal = $('#selectDestinasjon option:selected').val();
+    let datoVal = $('#selectDato option:selected').val();
+    console.log("INNE I TID FUNKSJON:");
+    console.log("Avgangval: " + avgangVal);
+    console.log("destinasjonVal: " + destinasjonVal);
+    console.log("DatoVal: " + datoVal);
+    const url = "kunde/GetAlleReiser";
+    $.get(url, function (turer) {
+        if (turer) {
+            /*let ut = "<label>Velg tidspunkt</label>";*/
+            /*let ut = "<select class='form-control' onchange='GetAllDestinasjoner()' id='selectAvgang'> ";*/
+
+            let ut = "<select class='form-control' id='selectTid' onchange='displayBiletter()'>";
+            ut += "<option>Velg dato: </option>";
+            for (let tur of turer) {
+                //console.log(tur.tid);
+                console.log("Avgang " + tur.fraSted.stedsNavn);
+                console.log("Destinasjon: " + tur.tilSted.stedsNavn);
+                console.log("Avreisedato: " + tur.dato);
+
+                /* ut += "<option>" + tur.tid + "</option>";*/
+                if (avgangVal === tur.fraSted.stedsNavn && destinasjonVal === tur.tilSted.stedsNavn && datoVal === tur.dato) {
+                    ut += "<option>" + tur.tid + "</option>";
+                }
+            }
+            ut += "</select>";
+            $("#selectTid").html(ut);
+            //if (document.getElementById('selectDato').options.length == 0) {
+            //    console.log("skriv ut feil tid");
+            //    $("#feilDato").html("Ingen tilgjengelige turer denne ruten");
+            //}
+            //else {
+            //    $("#feilDato").html("");
+            //}
+        }
+        else {
+            $("#feil").html("Feil i db");
+        }
+    });
+}
+
+function displayBiletter() {
+    console.log("starter bilett funksjon");
+    let avgangVal = $('#selectAvgang option:selected').val();
+    let destinasjonVal = $('#selectDestinasjon option:selected').val();
+    let datoVal = $('#selectDato option:selected').val();
+    let tidVal = $('#selectTid option:selected').val();
+    console.log("Avgangval: " + avgangVal);
+    console.log("destinasjonVal: " + destinasjonVal);
+    console.log("DatoVal: " + datoVal);
+    console.log("Tid: " + tidVal);
+    const url = "kunde/GetAlleReiser";
+    $.get(url, function (turer) {
+        if (turer) {
+            /*let ut = "<label>Velg tidspunkt</label>";*/
+            /*let ut = "<select class='form-control' onchange='GetAllDestinasjoner()' id='selectAvgang'> ";*/
+
+            let ut = "<select class='form-control' id='selectTid'>";
+            ut += "<option>Velg dato: </option>";
+            for (let tur of turer) {
+                //console.log(tur.tid);
+                console.log("Avgang " + tur.fraSted.stedsNavn);
+                console.log("Destinasjon: " + tur.tilSted.stedsNavn);
+                console.log("Avreisedato: " + tur.dato);
+                console.log("AvreiseTid: " + tur.tid);
+                /* ut += "<option>" + tur.tid + "</option>";*/
+                if (avgangVal === tur.fraSted.stedsNavn && destinasjonVal === tur.tilSted.stedsNavn && datoVal === tur.dato) {
+                    ut += "<option>" + tur.tid + "</option>";
+                }
+            }
+            ut += "</select>";
+            $("#selectTid").html(ut);
+            //if (document.getElementById('selectDato').options.length == 0) {
+            //    console.log("skriv ut feil tid");
+            //    $("#feilDato").html("Ingen tilgjengelige turer denne ruten");
+            //}
+            //else {
+            //    $("#feilDato").html("");
+            //}
+        }
+        else {
+            $("#feil").html("Feil i db");
+        }
+    });
+}
+
+
+
+//function displayDato() {
+//    console.log("display dato");
+//    let ut = "<input class='form-control' type='text' placeholder='(DD/MM/ÅÅÅÅ) -> 07.02.2021' onchange='listTidspunkt()' id='typeDato'>";
+//    $("#typeDato").html(ut);
+//}
 
 
 //function listTidspunkt() {
 //    console.log("starter tidspunkt");
-//    let dato = $('#datoValgt').val();
-//    let startstasjon = $('#startstasjon option:selected').val();
-//    let endestasjon = $('#endestasjon option:selected').val();
+//    let avgangVal = $('#selectAvgang option:selected').val();
+//    let destinasjonVal = $('#selectDestinasjon option:selected').val();
+//    let datoVal = $('#typeDato').val();
+//    console.log("Avgangval: " + avgangVal);
+//    console.log("destinasjonVal: " + destinasjonVal);
+//    console.log("datoVal:"+datoVal);
 //    const url = "kunde/GetAlleReiser";
 //    $.get(url, function (turer) {
 //        if (turer) {
 //            /*let ut = "<label>Velg tidspunkt</label>";*/
 //            /*let ut = "<select class='form-control' onchange='GetAllDestinasjoner()' id='selectAvgang'> ";*/
-//            /*ut += "<option>Velg startstasjon</option>";*/
+            
 //            let ut = "<select class='form-control' id='selectTid'>";
+//            ut += "<option>Velg startstasjon</option>";
 //            for (let tur of turer) {
-//                if (startstasjon === tur.startStasjon.stasjonsNavn && endestasjon === tur.endeStasjon.stasjonsNavn && dato === tur.dato) {
-//                    ut += "<option>" + tur.tid + "</option>";
-//                }
+//                console.log(tur);
+//                console.log(tur.tid);
+
+//                ut += "<option>" + tur.tid + "</option>";
+
+//                //if (startstasjon === tur.startStasjon.stasjonsNavn && endestasjon === tur.endeStasjon.stasjonsNavn && dato === tur.dato) {
+//                //    ut += "<option>" + tur.tid + "</option>";
+//                //}
 //            }
 //            ut += "</select>";
-//            $("#tid").html(ut);
-//            if (document.getElementById('tidspunkt').options.length == 0) {
-//                $("#ikkeTurDato").html("Ingen tilgjengelige turer på valgt dato");
+//            $("#selectTid").html(ut);
+//            if (document.getElementById('selectTid').options.length == 0) {
+//                console.log("skriv ut feil tid");
+//                $("#feilTid").html("Ingen tilgjengelige turer på valgt dato");
 //            }
 //            else {
-//                $("#ikkeTurDato").html("");
+//                $("#feilTid").html("");
 //            }
 //        }
 //        else {
