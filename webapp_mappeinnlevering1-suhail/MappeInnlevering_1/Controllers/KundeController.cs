@@ -20,16 +20,17 @@ namespace MappeInnlevering_1.Controllers
         }
 
 
-        public async Task<List<Sted>> HentAlleStasjoner()
+        public async Task<List<Sted>> GetAllSteder()
         {
             /*List<Sted> alleStasjoner = await _DB.HentAlleStasjoner();
             return Ok(alleStasjoner);*/
-            return await _DB.HentAlleStasjoner();
+            return await _DB.GetAllSteder();
         }
 
-        public async Task<List<Reiser>> GetAlleSteder()
+
+        public async Task<List<Reiser>> GetAlleReiser()
         {
-            return await _DB.GetAlleSteder();
+            return await _DB.GetAlleReiser();
         }
 
 

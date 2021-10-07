@@ -31,9 +31,8 @@ namespace MappeInnlevering_1.DAL
 
         //}
 
-        public async Task<List<Sted>> HentAlleStasjoner()
+        public async Task<List<Sted>> GetAllSteder()
         {
-            System.Diagnostics.Debug.WriteLine("Inne i hent alle stasjoner");
             List<Sted> alleStasjoner = await _DB.Steder.ToListAsync();
             foreach (var i in alleStasjoner)
             {
@@ -42,7 +41,7 @@ namespace MappeInnlevering_1.DAL
             return alleStasjoner;
         }
 
-        public async Task<List<Reiser>> GetAlleSteder()
+        public async Task<List<Reiser>> GetAlleReiser()
         {
             List<Reiser> alleTurer = await _DB.Reiser.ToListAsync();
 

@@ -4,14 +4,14 @@
 });
 //console.log(hentAlleKunder());
 function hentAlleKunder() {
-    $.get("kunde/GetAlleSteder", function (kunder) {
+    $.get("kunde/GetAlleReiser", function (kunder) {
         formaterKunder(kunder);
         console.log("Kunder" + kunder);
     });
 }
 
 function hentAlleSteder() {
-    $.get("kunde/HentAlleStasjoner", function (kunderr) {
+    $.get("kunde/GetAllSteder", function (kunderr) {
         //formaterKunder(kunder);
         console.log("Kunder" + kunderr);
     });

@@ -10,7 +10,7 @@ namespace MappeInnlevering_1.DAL
     {
         //Task<List<Reise>> HentAlle();
 
-        Task<List<Reiser>> GetAlleSteder();
-        Task<List<Sted>> HentAlleStasjoner();
+        Task<List<Reiser>> GetAlleReiser();
+        Task<List<Sted>> GetAllSteder();
     }
 }
