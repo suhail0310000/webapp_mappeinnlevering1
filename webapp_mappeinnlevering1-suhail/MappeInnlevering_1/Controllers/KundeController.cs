@@ -20,17 +20,29 @@ namespace MappeInnlevering_1.Controllers
         }
 
 
-        public async Task<List<Sted>> GetAllSteder()
-        {
-            /*List<Sted> alleStasjoner = await _DB.HentAlleStasjoner();
-            return Ok(alleStasjoner);*/
-            return await _DB.GetAllSteder();
-        }
+        
 
 
         public async Task<List<Reiser>> GetAlleReiser()
         {
             return await _DB.GetAlleReiser();
+        }
+
+        public async Task<List<Sted>> GetAllSteder()
+        {
+            List<Sted> alleSteder = await _DB.GetAllSteder();
+            foreach (var i in alleSteder)
+            {
+                System.Diagnostics.Debug.WriteLine(i.StedsNavn);
+            }
+            return alleSteder;
+            //return await _DB.GetAllSteder();
+        }
+
+        public async Task<List<Sted>> GetAllDestinasjoner(string startStasjonsNavn)
+        {
+            List<Sted> destinasjon = await _DB.GetAllDestinasjoner(startStasjonsNavn);
+            return destinasjon;
         }
 
 

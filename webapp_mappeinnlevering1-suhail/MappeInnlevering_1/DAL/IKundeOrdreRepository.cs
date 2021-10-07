@@ -12,5 +12,7 @@ namespace MappeInnlevering_1.DAL
 
         Task<List<Reiser>> GetAlleReiser();
         Task<List<Sted>> GetAllSteder();
+
+        Task<List<Sted>> GetAllDestinasjoner(string startStasjonsNavn);
     }
 }

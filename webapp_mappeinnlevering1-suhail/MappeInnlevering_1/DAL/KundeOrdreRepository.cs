@@ -41,6 +41,8 @@ namespace MappeInnlevering_1.DAL
             return alleStasjoner;
         }
 
+
+
         public async Task<List<Reiser>> GetAlleReiser()
         {
             List<Reiser> alleTurer = await _DB.Reiser.ToListAsync();
@@ -52,6 +54,21 @@ namespace MappeInnlevering_1.DAL
             }
             return alleTurer;
 
+        }
+
+        public async Task<List<Sted>> GetAllDestinasjoner(string startStasjonsNavn)
+        {
+            List<Reiser> alleReiser = await _DB.Reiser.ToListAsync();
+            var endeStasjon = new List<Sted>();
+
+            foreach (var reise in alleReiser)
+            {
+                if (startStasjonsNavn.Equals(reise.FraSted.StedsNavn))
+                {
+                    endeStasjon.Add(reise.TilSted);
+                }
+            }
+            return endeStasjon;
         }
 
         //public async Task<List<Reiser>> HentAlle()
