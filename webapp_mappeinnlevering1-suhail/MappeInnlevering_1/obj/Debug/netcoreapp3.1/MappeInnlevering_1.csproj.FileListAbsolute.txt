@@ -230,3 +230,10 @@ C:\Users\Suhai\webapp_mappeinnlevering1-suhail\webapp_mappeinnlevering1-suhail\M
 C:\Users\Suhai\webapp_mappeinnlevering1-suhail\webapp_mappeinnlevering1-suhail\MappeInnlevering_1\obj\Debug\netcoreapp3.1\MappeInnlevering_1.dll
 C:\Users\Suhai\webapp_mappeinnlevering1-suhail\webapp_mappeinnlevering1-suhail\MappeInnlevering_1\obj\Debug\netcoreapp3.1\MappeInnlevering_1.pdb
 C:\Users\Suhai\webapp_mappeinnlevering1-suhail\webapp_mappeinnlevering1-suhail\MappeInnlevering_1\obj\Debug\netcoreapp3.1\MappeInnlevering_1.genruntimeconfig.cache
+C:\Users\Suhai\webapp_mappeinnlevering1-suhail\webapp_mappeinnlevering1-suhail\MappeInnlevering_1\bin\Debug\netcoreapp3.1\Serilog.dll
+C:\Users\Suhai\webapp_mappeinnlevering1-suhail\webapp_mappeinnlevering1-suhail\MappeInnlevering_1\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.dll
+C:\Users\Suhai\webapp_mappeinnlevering1-suhail\webapp_mappeinnlevering1-suhail\MappeInnlevering_1\bin\Debug\netcoreapp3.1\Serilog.Extensions.Logging.File.dll
+C:\Users\Suhai\webapp_mappeinnlevering1-suhail\webapp_mappeinnlevering1-suhail\MappeInnlevering_1\bin\Debug\netcoreapp3.1\Serilog.Formatting.Compact.dll
+C:\Users\Suhai\webapp_mappeinnlevering1-suhail\webapp_mappeinnlevering1-suhail\MappeInnlevering_1\bin\Debug\netcoreapp3.1\Serilog.Sinks.Async.dll
+C:\Users\Suhai\webapp_mappeinnlevering1-suhail\webapp_mappeinnlevering1-suhail\MappeInnlevering_1\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
+C:\Users\Suhai\webapp_mappeinnlevering1-suhail\webapp_mappeinnlevering1-suhail\MappeInnlevering_1\bin\Debug\netcoreapp3.1\Serilog.Sinks.RollingFile.dll

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MappeInnlevering_1.Models;
 using Microsoft.EntityFrameworkCore;
 using MappeInnlevering_1.DAL;
+using Microsoft.Extensions.Logging;
 
 namespace MappeInnlevering_1.Controllers
 {
@@ -13,15 +14,13 @@ namespace MappeInnlevering_1.Controllers
     public class KundeController : ControllerBase
     {
         private readonly IKundeOrdreRepository _DB;
+        private readonly ILogger<KundeController> _log;
 
-        public KundeController(IKundeOrdreRepository Db)
+        public KundeController(IKundeOrdreRepository Db, ILogger<KundeController> log)
         {
             _DB = Db;
+            _log = log;
         }
-
-
-        
-
 
         public async Task<List<Reiser>> GetAlleReiser()
         {
@@ -39,10 +38,28 @@ namespace MappeInnlevering_1.Controllers
             //return await _DB.GetAllSteder();
         }
 
-        public async Task<List<Sted>> GetAllDestinasjoner(string startStasjonsNavn)
+        public async Task<List<Sted>> GetAllDestinasjoner(string avgang)
         {
-            List<Sted> destinasjon = await _DB.GetAllDestinasjoner(startStasjonsNavn);
+            List<Sted> destinasjon = await _DB.GetAllDestinasjoner(avgang);
             return destinasjon;
+        }
+
+
+        public async Task<ActionResult> Lagre(KundeOrdre innBussBestilling)
+        {
+            if (ModelState.IsValid)
+            {
+
+                bool returOk = await _DB.Lagre(innBussBestilling);
+                if (!returOk)
+                {
+                    _log.LogInformation("Bestilling ble ikke registrert");
+                    return BadRequest("Bestilling ble ikke registrert");
+                }
+                return Ok("Bestilling registrert");
+            }
+            _log.LogInformation("Feil i inputvalidering");
+            return BadRequest("Feil i inputvalidering på server");
         }
 
 

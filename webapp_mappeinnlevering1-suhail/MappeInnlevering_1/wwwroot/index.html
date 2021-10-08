@@ -83,6 +83,8 @@
                     </div>
                     <div class="col-md-4 col-md-pull-7">
                         <div class="booking-form">
+                            <div id="alertBox"></div>
+                            
 
                             <!-- POPUP FOOOOORM -->
                             <!-- Modal -->
@@ -90,21 +92,6 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -142,23 +129,23 @@
                                                                             <td class="text-center"><strong>Voksen biletter</strong></td>
                                                                             <td class="text-right"><strong>Total pris:</strong></td>
                                                                             <!--<td><strong>Fra sted:</strong></td>
-                                                                <td class="text-center"><strong>Til sted:</strong></td>
-                        <td class="text-center"><strong>Tid:</strong></td>
-                        <td class="text-right"><strong>Total pris:</strong></td>-->
+                                                                                            <td class="text-center"><strong>Til sted:</strong></td>
+                                                    <td class="text-center"><strong>Tid:</strong></td>
+                                                    <td class="text-right"><strong>Total pris:</strong></td>-->
                                                                             <!--</tr>-->
                                                                     </thead>
                                                                     <tbody id="bilettTabell">
                                                                         <!-- foreach ($order->lineItems as $line) or some such thing here -->
                                                                         <!--<tr>
-                        <td>BS-200</td>
-                        <td class="text-center">$10.99</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">$10.99</td>
-                        <td class="text-center">1</td>
-                        <td class="text-right">$10.99</td>
-                    </tr>-->
+                                                    <td>BS-200</td>
+                                                    <td class="text-center">$10.99</td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">$10.99</td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-right">$10.99</td>
+                                                </tr>-->
 
                                                                     </tbody>
                                                                 </table>
@@ -168,28 +155,30 @@
 
 
                                                         <!--KONTAKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKT  -->
-                                                        <div class="container mt-5 mb-5 d-flex justify-content-center">
-                                                            <div class="card px-1 py-4">
-                                                                <div class="card-body">
-                                                                    <h5 style="color:red">Fyll ut kontaktinformasjon for å fullføre bestillingen</h5>
-                                                                    <div class="row">
-                                                                        <div class="col-sm-6">
-                                                                            <div class="form-group">
-                                                                                <!-- <label for="name">Name</label> --> <input class="form-control" type="text" placeholder="Fornavn">
-                                                                            </div>
-                                                                            
-                                                                        </div>
-                                                                        <div class="col-sm-6">
-                                                                            <div class="form-group">
-                                                                                <!-- <label for="name">Name</label> --> <input class="form-control" type="text" placeholder="Etternavn">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                      
+                                                            <div class="container mt-5 mb-5 d-flex justify-content-center">
+                                                                <div class="card px-1 py-4">
+                                                                    <div class="card-body">
+                                                                        <h5 style="color:red">Fyll ut kontaktinformasjon for å fullføre bestillingen</h5>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <!-- <label for="name">Name</label> --> <input class="form-control" type="text" placeholder="Fornavn" id="inpFornavn">
+                                                                                </div>
 
-                                                                    <!--<div class=" d-flex flex-column text-center px-5 mt-3 mb-3"> <small class="agree-text">By Booking this appointment you agree to the</small> <a href="#" class="terms">Terms & Conditions</a> </div> <button class="btn btn-primary btn-block confirm-button">Confirm</button>-->
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <!-- <label for="name">Name</label> --> <input class="form-control" type="text" placeholder="Etternavn" id="inpEtternavn">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <!--<div class=" d-flex flex-column text-center px-5 mt-3 mb-3"> <small class="agree-text">By Booking this appointment you agree to the</small> <a href="#" class="terms">Terms & Conditions</a> </div> <button class="btn btn-primary btn-block confirm-button">Confirm</button>-->
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                         
 
 
 
@@ -207,44 +196,21 @@
 
 
 
-                                                    </div>
+
+</div>
                                                 </div>
                                             </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                            ...
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
+                                            <button type="button" type="submit" class="btn btn-primary" onclick="lagreBestilling()">Fullfør bestilling</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-
-
 
 
                             <form>
@@ -278,6 +244,39 @@
                                 </div>
 
                                 <!--<div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <span class="form-label">Barn</span>
+                    <div class="form-control-sm-6">
+                        <input type="number" id="antBarnBiletter">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <span class="form-label">Student</span>
+
+                    <div class="form-control-sm-6">
+                        <input type="number" id="antStudentBiletter">
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <span class="form-label">Voksen</span>
+
+                    <div class="form-control-sm-6">
+                        <input type="number" id="antVoksenBiletter">
+                    </div>
+
+                </div>
+            </div>
+        </div>-->
+
+
+
+                                <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <span class="form-label">Barn</span>
@@ -306,40 +305,7 @@
 
                                         </div>
                                     </div>
-                                </div>-->
-
-
-
-                                <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <span class="form-label">Barn</span>
-                <div class="form-control-sm-6">
-                    <input type="number" id="antBarnBiletter">
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <span class="form-label">Student</span>
-
-                <div class="form-control-sm-6">
-                    <input type="number" id="antStudentBiletter">
-                </div>
-
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <span class="form-label">Voksen</span>
-
-                <div class="form-control-sm-6">
-                    <input type="number" id="antVoksenBiletter">
-                </div>
-
-            </div>
-        </div>
-    </div>
+                                </div>
                                 <div class="form-btn">
 
                                 </div>
@@ -375,15 +341,6 @@
             background-color: gold;
             color: black;
         }
-
-
-
-
-
-
-
-
-
         .section {
             position: relative;
             height: 100vh;
@@ -525,19 +482,5 @@
             }
     </style>
 </body>
-<script>
-    function finalCost() {
-        var roomType = document.getElementById("room_type").value;
-        var roomNum = document.getElementById("room_number").value;
-        var personNum = document.getElementById("person_number").value;
-        var childNum = document.getElementById("child_number").value;
-        var resFacilities = document.getElementById("res_facilities").value;
-
-        var total = (parseInt(roomType) * 10) + ((roomNum) * 2) + ((personNum) * 3) + ((childNum) * 2) + ((resFacilities) * 5)
-
-        document.getElementById("result").innerHTML = total;
-    }</script>
-
-
 </html>
 

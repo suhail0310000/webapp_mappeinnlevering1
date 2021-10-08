@@ -26,8 +26,8 @@ namespace MappeInnlevering_1.Models
 
         //public double PrisVoksen { get; set; }
 
-        //public string FraSted { get; set; }
+        public string FraSted { get; set; }
 
-        //public string TilSted { get; set; }
+        public string TilSted { get; set; }
     }
 }
