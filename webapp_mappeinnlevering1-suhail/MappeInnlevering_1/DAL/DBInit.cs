@@ -54,8 +54,66 @@ namespace MappeInnlevering_1.Models
                 //string tid3 = "18:00";
 
                 //opprett reise
+                // TID1 = 08:00 GIR 100 KR FOR BARN, 120 FOR STUDENT OG 200 FOR VOKSNE
                 var reise1 = new Reiser { FraSted = Sted1, TilSted = Sted2, Dato = dato1, Tid = tid1, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
-                var reise2 = new Reiser { FraSted = Sted2, TilSted = Sted3, Dato = dato2, Tid = tid2, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
+
+                //EDRET KUN PÅ TIDEN. TID2 = 18:00, GIR 130 FOR BARN, 170 FOR STUDENT OG 300 FOR VOKSNE
+                var reise2 = new Reiser { FraSted = Sted1, TilSted = Sted2, Dato = dato1, Tid = tid2, PrisBarn = 130, PrisStudent = 170, PrisVoksen = 300 };
+
+                //ENDRET TIL DATO2, MED TID1
+                var reise3 = new Reiser { FraSted = Sted1, TilSted = Sted2, Dato = dato2, Tid = tid1, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
+
+                //ENDRET TIL DATO2 , MED TID2 (øker priser)
+                var reise4 = new Reiser { FraSted = Sted1, TilSted = Sted2, Dato = dato2, Tid = tid2, PrisBarn = 130, PrisStudent = 170, PrisVoksen = 300 };
+
+                //ENDRET TILSTED TIL STED3
+                var reise5 = new Reiser { FraSted = Sted1, TilSted = Sted3, Dato = dato1, Tid = tid1, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 300 };
+
+                //ENDRET TIL TID2 PÅ STED 3
+                var reise6 = new Reiser { FraSted = Sted1, TilSted = Sted3, Dato = dato1, Tid = tid2, PrisBarn = 130, PrisStudent = 170, PrisVoksen = 300 };
+
+                //ENDRET TIL DATO2 MED STED3
+                var reise7 = new Reiser { FraSted = Sted1, TilSted = Sted3, Dato = dato2, Tid = tid1, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
+
+                //ENDRET TIL TID2 MED DATO2
+                var reise8 = new Reiser { FraSted = Sted1, TilSted = Sted3, Dato = dato2, Tid = tid2, PrisBarn = 130, PrisStudent = 170, PrisVoksen = 300 };
+
+                //ENDRET TIL FRASTED = STED2
+                var reise9 = new Reiser { FraSted = Sted2, TilSted = Sted1, Dato = dato1, Tid = tid1, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
+
+                //ENDRET TIL TID2
+                var reise10 = new Reiser { FraSted = Sted2, TilSted = Sted1, Dato = dato1, Tid = tid2, PrisBarn = 130, PrisStudent = 170, PrisVoksen = 300 };
+
+                //ENDRET TIL DATO2
+                var reise11 = new Reiser { FraSted = Sted2, TilSted = Sted1, Dato = dato2, Tid = tid1, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
+
+                //ENDRET TIL TID2 MED DATO2
+                var reise12 = new Reiser { FraSted = Sted2, TilSted = Sted1, Dato = dato2, Tid = tid2, PrisBarn = 130, PrisStudent = 170, PrisVoksen = 300 };
+
+                //ENDRER TILSTED TIL STED3
+                var reise13 = new Reiser { FraSted = Sted2, TilSted = Sted3, Dato = dato1, Tid = tid1, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
+                var reise14 = new Reiser { FraSted = Sted2, TilSted = Sted3, Dato = dato1, Tid = tid2, PrisBarn = 130, PrisStudent = 170, PrisVoksen = 300 };
+                var reise15 = new Reiser { FraSted = Sted2, TilSted = Sted3, Dato = dato2, Tid = tid1, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
+                var reise16 = new Reiser { FraSted = Sted2, TilSted = Sted3, Dato = dato2, Tid = tid2, PrisBarn = 130, PrisStudent = 170, PrisVoksen = 300 };
+
+                //ENDRER FRASTED TIL STED 3
+                var reise17 = new Reiser { FraSted = Sted3, TilSted = Sted1, Dato = dato1, Tid = tid1, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
+                var reise18 = new Reiser { FraSted = Sted3, TilSted = Sted1, Dato = dato1, Tid = tid2, PrisBarn = 130, PrisStudent = 170, PrisVoksen = 300 };
+                var reise19 = new Reiser { FraSted = Sted3, TilSted = Sted1, Dato = dato2, Tid = tid1, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
+                var reise20 = new Reiser { FraSted = Sted3, TilSted = Sted1, Dato = dato2, Tid = tid2, PrisBarn = 130, PrisStudent = 170, PrisVoksen = 300 };
+
+                //ENDRER TILSTED TIL STED2
+                var reise21 = new Reiser { FraSted = Sted3, TilSted = Sted2, Dato = dato1, Tid = tid1, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
+                var reise22 = new Reiser { FraSted = Sted3, TilSted = Sted2, Dato = dato1, Tid = tid2, PrisBarn = 130, PrisStudent = 170, PrisVoksen = 300 };
+                var reise23 = new Reiser { FraSted = Sted3, TilSted = Sted2, Dato = dato2, Tid = tid1, PrisBarn = 100, PrisStudent = 120, PrisVoksen = 200 };
+                var reise24 = new Reiser { FraSted = Sted3, TilSted = Sted2, Dato = dato2, Tid = tid2, PrisBarn = 130, PrisStudent = 170, PrisVoksen = 300 };
+
+
+                ;
+
+
+
+
                 //var Ordre1 = new Ordre { AntallBarn = 1, AntallStudent= 1, AntallVoksne = 1, TotalPris= 100 };
                 //var Ordre2 = new Ordre { AntallBarn = 1, AntallStudent = 1, AntallVoksne = 1, TotalPris = 100 };
 
@@ -67,6 +125,29 @@ namespace MappeInnlevering_1.Models
 
                 context.Reiser.Add(reise1);
                 context.Reiser.Add(reise2);
+                context.Reiser.Add(reise3);
+                context.Reiser.Add(reise4);
+                context.Reiser.Add(reise5);
+                context.Reiser.Add(reise6);
+                context.Reiser.Add(reise7);
+                context.Reiser.Add(reise8);
+                context.Reiser.Add(reise9);
+                context.Reiser.Add(reise10);
+                context.Reiser.Add(reise11);
+                context.Reiser.Add(reise12);
+                context.Reiser.Add(reise13);
+                context.Reiser.Add(reise14);
+                context.Reiser.Add(reise15);
+                context.Reiser.Add(reise16);
+                context.Reiser.Add(reise17);
+                context.Reiser.Add(reise18);
+                context.Reiser.Add(reise19);
+                context.Reiser.Add(reise20);
+                context.Reiser.Add(reise21);
+                context.Reiser.Add(reise22);
+                context.Reiser.Add(reise23);
+                context.Reiser.Add(reise24);
+
 
                 //context.Kunder.Add(kunde2);
 
