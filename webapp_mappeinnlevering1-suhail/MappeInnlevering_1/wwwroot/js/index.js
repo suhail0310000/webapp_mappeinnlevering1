@@ -164,9 +164,9 @@ function beregnPris_HentInfo() {
     let destinasjonVal = $('#selectDestinasjon option:selected').val();
     let datoVal = $('#selectDato option:selected').val();
     let tidVal = $('#selectTid option:selected').val();
-    let antallBarn = $("#antBarnBiletter").val();
-    let antallStudent = $("#antStudentBiletter").val();
-    let antallVoksne = $("#antVoksenBiletter").val();
+    let antBarn = $("#antBarnBiletter").val();
+    let antStudent  = $("#antStudentBiletter").val();
+    let antVoksne = $("#antVoksenBiletter").val();
     let ut = "";
     console.log("fungerer");
     let prisTotal;
@@ -201,9 +201,8 @@ function beregnPris_HentInfo() {
 
                
                 }
-                //FIKS PÅ DENNE
-                if (antallBarn > 0 && antallVoksne > 0 && antallStudent > 0) {
-                    prisTotal = (prisBarn * antallBarn) + (prisVoksen * antallVoksne) + (prisStudent * antallStudent);
+                if (antBarn > 0 && antVoksne > 0 && antStudent > 0) {
+                    prisTotal = (prisBarn * antBarn) + (prisVoksen * antVoksne) + (prisStudent * antStudent);
                     $("#feil").html(prisTotal);
                 } else if (antBarn == 0 && antVoksne > 0 && antStudent > 0) {
                     prisTotal = (prisVoksen * antVoksne) + (prisStudent * antStudent);
@@ -224,8 +223,8 @@ function beregnPris_HentInfo() {
                     totalPris = 0;
                 }
             }
-
-            ut += '< tr ><td>' + $('#selectAvgang option:selected').val() + '</td><td class="text-center">' + $('#selectDestinasjon option:selected').val() + '</td><td class="text-center">' + $('#selectDato option:selected').val() + "  " + '</td><td class="text-center">' + $('#selectTid option:selected').val() + '</td> ' + '<td class="text-center">' + $("#antBarnBiletter").val() + '</td>' + '<td class="text-center">'+ $("#antStudentBiletter").val() + '</td><td class="text-center">' + $("#antVoksenBiletter").val() + '</td> <td class="text-center">' + prisTotal + '</td></tr >'
+            ut += '< tr ><td>' + $('#selectAvgang option:selected').val() + '</td><td class="text-center">' + $('#selectDestinasjon option:selected').val() + '</td><td class="text-center">' + $('#selectDato option:selected').val() + "  " + '</td><td class="text-center">' + $('#selectTid option:selected').val() + '</td> ' + '<td class="text-center">' + $("#antBarnBiletter").val() + '</td>' + '<td class="text-center">' + $("#antStudentBiletter").val() + '</td><td class="text-center">' + $("#antVoksenBiletter").val() + '</td> <td class="text-center">' + prisTotal + '</td></tr >'
+            //ut+= '< tr ><td>' + $('#selectAvgang option:selected').val() + '</td><td class="text-center">' + $('#selectDestinasjon option:selected').val() + '</td><td class="text-center">' + $('#selectDato option:selected').val() + "  " + '</td><td class="text-center">' + $('#selectTid option:selected').val() + '</td><td class="text-center">' + $("#antStudentBiletter").val() + '</td><td class="text-center">' + $("#antVoksenBiletter").val() + '</td><td class="text-center">' + $("#antStudentBiletter").val() + '</td><td class="text-right">' + $("#antVoksenBiletter").val() + '</td> <td class="text-center">' + prisTotal + '</td></tr >'
 
             $("#bilettTabell").html(ut);
             
@@ -236,8 +235,8 @@ function beregnPris_HentInfo() {
 }
 
 
-function lagreBestilling() {
-    const bestilling = {
+function fullførOrdre() {
+    const ordre = {
         FraSted: $('#selectAvgang option:selected').val(),
         TilSted: $('#selectDestinasjon option:selected').val(),
         dato: $('#selectDato option:selected').val(),
@@ -248,9 +247,9 @@ function lagreBestilling() {
         AntallStudent: $("#antStudentBiletter").val(),
         AntallVoksne: $("#antVoksenBiletter").val()
     }
-    let ut = "";
+
     const url = "Kunde/Lagre";
-    $.post(url, bestilling, function () {
+    $.post(url, ordre, function () {
         window.location.href = 'index.html';
         /*formaterAlertSucsess();*/
         alert("Takk for din bestilling, " +$("#inpFornavn").val()+" Vi gleder oss til å ha med deg på tur hos oss på Line");
