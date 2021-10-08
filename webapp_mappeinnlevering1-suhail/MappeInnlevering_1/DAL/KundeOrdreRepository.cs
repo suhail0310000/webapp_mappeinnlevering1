@@ -75,22 +75,22 @@ namespace MappeInnlevering_1.DAL
         }
 
 
-        public async Task<bool> Lagre(KundeOrdre innBussBestilling)
+        public async Task<bool> Lagre(KundeOrdre innOrdre)
         {
             int turID = 0;
             List<Reiser> alleTurer = await _DB.Reiser.ToListAsync();
             foreach (var turen in alleTurer)
             {
-                if (innBussBestilling.FraSted.Equals(turen.FraSted.StedsNavn) &&
-                    innBussBestilling.TilSted.Equals(turen.TilSted.StedsNavn) &&
-                    innBussBestilling.Tid.Equals(turen.Tid) && innBussBestilling.Dato.Equals(turen.Dato))
+                if (innOrdre.FraSted.Equals(turen.FraSted.StedsNavn) &&
+                    innOrdre.TilSted.Equals(turen.TilSted.StedsNavn) &&
+                    innOrdre.Tid.Equals(turen.Tid) && innOrdre.Dato.Equals(turen.Dato))
                 {
                     turID = turen.RId;
                 }
             }
             Reiser funnetTur = _DB.Reiser.Find(turID);
 
-            double totalpris = (innBussBestilling.AntallBarn * funnetTur.PrisBarn) + (innBussBestilling.AntallVoksne * funnetTur.PrisVoksen);
+            double totalpris = (innOrdre.AntallBarn * funnetTur.PrisBarn) + (innOrdre.AntallVoksne * funnetTur.PrisVoksen);
 
 
             int kundeID = 0;
@@ -98,8 +98,8 @@ namespace MappeInnlevering_1.DAL
 
             foreach (var kunde in alleKunder)
             {
-                if (innBussBestilling.Fornavn.Equals(kunde.Fornavn) &&
-                    innBussBestilling.Etternavn.Equals(kunde.Etternavn))
+                if (innOrdre.Fornavn.Equals(kunde.Fornavn) &&
+                    innOrdre.Etternavn.Equals(kunde.Etternavn))
                 {
                     kundeID = kunde.KId;
                 }
@@ -107,8 +107,8 @@ namespace MappeInnlevering_1.DAL
             try
             {
                 var nyBestillingRad = new Ordre();
-                nyBestillingRad.AntallBarn = innBussBestilling.AntallBarn;
-                nyBestillingRad.AntallVoksne = innBussBestilling.AntallVoksne;
+                nyBestillingRad.AntallBarn = innOrdre.AntallBarn;
+                nyBestillingRad.AntallVoksne = innOrdre.AntallVoksne;
                 nyBestillingRad.TotalPris = totalpris;
                 nyBestillingRad.Reiser = funnetTur;
 
@@ -118,8 +118,8 @@ namespace MappeInnlevering_1.DAL
                 if (funnetKunde == null)
                 {
                     var kundeRad = new Kunder();
-                    kundeRad.Fornavn = innBussBestilling.Fornavn;
-                    kundeRad.Etternavn = innBussBestilling.Etternavn;
+                    kundeRad.Fornavn = innOrdre.Fornavn;
+                    kundeRad.Etternavn = innOrdre.Etternavn;
                     _DB.Kunder.Add(kundeRad);
                     await _DB.SaveChangesAsync();
                     nyBestillingRad.Kunder = kundeRad;

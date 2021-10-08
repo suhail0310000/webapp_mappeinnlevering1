@@ -15,6 +15,6 @@ namespace MappeInnlevering_1.DAL
 
         Task<List<Sted>> GetAllDestinasjoner(string avgang);
 
-        Task<bool> Lagre(KundeOrdre innBussBestilling);
+        Task<bool> Lagre(KundeOrdre innOrdre);
     }
 }
