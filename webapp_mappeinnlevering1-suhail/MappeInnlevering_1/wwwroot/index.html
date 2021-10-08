@@ -66,7 +66,7 @@
             </ul>
         </div>
     </nav>
-    
+
 
     <div id="booking" class="section">
         <div class="section-center">
@@ -84,27 +84,148 @@
                     </div>
                     <div class="col-md-4 col-md-pull-7">
                         <div class="booking-form">
+
+                            <!-- POPUP FOOOOORM -->
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+
+
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" style="background-color:gold;">
+                                                            <h3 class="panel-title"><strong>Reisedetaljer</strong></h3>
+                                                        </div>
+
+
+
+
+                                                        <div class="panel-body">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-condensed">
+                                                                    <thead>
+                                                                        <tr">
+                                                                            <td><strong>Avgang</strong></td>
+                                                                            <td class="text-center"><strong>Destinasjon</strong></td>
+                                                                            <td class="text-center"><strong>Dato</strong></td>
+                                                                            <td class="text-center"><strong>Tid</strong></td>
+                                                                            <td class="text-center"><strong>Barne biletter</strong></td>
+                                                                            <td class="text-center"><strong>Student biletter</strong></td>
+                                                                            <td class="text-center"><strong>Voksen biletter</strong></td>
+                                                                            <td class="text-right"><strong>Total pris:</strong></td>
+                                                                            <!--<td><strong>Fra sted:</strong></td>
+                                                                            <td class="text-center"><strong>Til sted:</strong></td>
+                                    <td class="text-center"><strong>Tid:</strong></td>
+                                    <td class="text-right"><strong>Total pris:</strong></td>-->
+                                                                            <!--</tr>-->
+                                                                    </thead>
+                                                                    <tbody id="bilettTabell">
+                                                                        <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                                                                        <!--<tr>
+                                                                            <td>BS-200</td>
+                                                                            <td class="text-center">$10.99</td>
+                                                                            <td class="text-center">1</td>
+                                                                            <td class="text-center">1</td>
+                                                                            <td class="text-center">1</td>
+                                                                            <td class="text-center">$10.99</td>
+                                                                            <td class="text-center">1</td>
+                                                                            <td class="text-right">$10.99</td>
+                                                                        </tr>-->
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
                             <form>
                                 <div class="form-group">
                                     <span class="form-label">Avgang</span>
                                     <div id="selectAvgang"></div>
-                                   
+
                                 </div>
 
                                 <div class="form-group">
                                     <span class="form-label">Destinasjon</span>
                                     <div id="selectDestinasjon"></div>
                                     <div id="feilDestinasjon" style="color: red"></div>
-                                    
+
                                 </div>
-                               
+
 
                                 <div class="form-group">
                                     <span class="form-label">Avreise dato:</span>
                                     <div id="selectDato"></div>
                                     <div id="feilDato" style="color: red"></div>
 
-                 
+
                                 </div>
 
                                 <div class="form-group">
@@ -128,7 +249,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <span class="form-label">Student</span>
-                                            
+
                                             <div class="form-control">
                                                 <input type="number" id="antStudentBiletter">
                                             </div>
@@ -138,7 +259,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <span class="form-label">Voksen</span>
-                                           
+
                                             <div class="form-control">
                                                 <input type="number" id="antVoksenBiletter">
                                             </div>
@@ -147,10 +268,12 @@
                                     </div>
                                 </div>
                                 <div class="form-btn">
-                                    <button class="submit-btn">Check availability</button>
+
                                 </div>
                                 <div id="feil" style="color: red"></div>
+                                
                             </form>
+                            <button class="submit-btn" onclick="beregnPris_HentInfo()" data-toggle="modal" data-target="#exampleModal">Check availability</button>
                         </div>
                     </div>
                 </div>
@@ -297,7 +420,6 @@
                 font-size: 16px;
                 color: rgba(255, 255, 255, 0.8);
             }
-
     </style>
 </body>
 <script>
@@ -315,5 +437,4 @@
 
 
 </html>
-
 
