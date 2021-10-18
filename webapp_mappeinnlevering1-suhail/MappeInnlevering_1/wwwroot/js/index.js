@@ -247,6 +247,14 @@ function fullførOrdre() {
         AntallStudent: $("#antStudentBiletter").val(),
         AntallVoksne: $("#antVoksenBiletter").val()
     }
+    console.log("Frasted" + $('#selectAvgang option:selected').val());
+    console.log("Frasted" + $('#selectDestinasjon option:selected').val());
+    console.log("Frasted" + $('#selectDato option:selected').val());
+    console.log("Frasted" + $('#selectTid option:selected').val());
+    console.log("Frasted" + $("#inpFornavn").val());
+    console.log("Frasted" + $("#antBarnBiletter").val());
+    console.log("Frasted" + $("#antStudentBiletter").val());
+    console.log("Frasted" + $("#antVoksenBiletter").val());
 
     const url = "Kunde/Lagre";
     $.post(url, ordre, function () {

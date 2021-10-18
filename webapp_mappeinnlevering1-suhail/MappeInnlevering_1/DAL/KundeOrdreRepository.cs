@@ -12,11 +12,12 @@ namespace MappeInnlevering_1.DAL
     public class KundeOrdreRepository : IKundeOrdreRepository
     {
         private readonly DB _DB;
-        private readonly ILogger<KundeController> _log;
+        private readonly ILogger<KundeOrdreRepository> _log;
 
-        public KundeOrdreRepository(DB Db)
+        public KundeOrdreRepository(DB Db, ILogger<KundeOrdreRepository> log)
         {
             _DB = Db;
+            _log = log;
         }
 
 

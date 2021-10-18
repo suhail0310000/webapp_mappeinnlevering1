@@ -22,31 +22,25 @@ namespace MappeInnlevering_1.Controllers
             _log = log;
         }
 
-        public async Task<List<Reiser>> GetAlleReiser()
+        public async Task<ActionResult<Reiser>> GetAlleReiser()
         {
-            return await _DB.GetAlleReiser();
+            //_log.LogInformation("Hallo Loggen!");
+            List<Reiser> alleReiser = await _DB.GetAlleReiser();
+            return Ok(alleReiser);
         }
 
-        public async Task<List<Sted>> GetAllSteder()
+        public async Task<ActionResult<Sted>> GetAllSteder()
         {
             List<Sted> alleSteder = await _DB.GetAllSteder();
-            foreach (var i in alleSteder)
-            {
-                System.Diagnostics.Debug.WriteLine(i.StedsNavn);
-            }
-            return alleSteder;
             //return await _DB.GetAllSteder();
+            return Ok(alleSteder);
         }
 
-        public async Task<List<Sted>> GetAllDestinasjoner(string avgang)
+        public async Task<ActionResult<Sted>> GetAllDestinasjoner(string avgang)
         {
             List<Sted> destinasjon = await _DB.GetAllDestinasjoner(avgang);
-            return destinasjon;
+            return Ok(destinasjon);
         }
-
-
-        
-
 
         public async Task<ActionResult> Lagre(KundeOrdre innOrdre)
         {
