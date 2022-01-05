@@ -1,0 +1,50 @@
+﻿<Properties StartupConfiguration="{CE3A47E4-6A59-4810-93A8-1B4BE3C4024C}|Default">
+  <MonoDevelop.Ide.ItemProperties.MappeInnlevering__1 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/KundeController.cs">
+    <Files>
+      <File FileName="Models/KundeOrdre.cs" Line="28" Column="44" IsPinned="True" />
+      <File FileName="DAL/DB.cs" IsPinned="True" />
+      <File FileName="DAL/KundeOrdreRepository.cs" Line="19" Column="13" IsPinned="True" />
+      <File FileName="wwwroot/js/validering.js" IsPinned="True" />
+      <File FileName="Properties/launchSettings.json" />
+      <File FileName="wwwroot/index.html" Line="63" Column="57" />
+      <File FileName="Startup.cs" />
+      <File FileName="Controllers/KundeController.cs" Line="62" Column="10" />
+      <File FileName="wwwroot/js/index.js" Line="251" Column="4" />
+      <File FileName="Models/Reise.cs" Line="1" Column="1" />
+      <File FileName="DAL/DBInit.cs" Line="22" Column="16" />
+      <File FileName="DAL/IKundeOrdreRepository.cs" Line="16" Column="59" />
+      <File FileName="wwwroot/info.html" />
+      <File FileName="wwwroot/js/site.js" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MappeInnlevering_1" expanded="True">
+            <Node name="MappeInnlevering_1" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Controllers" expanded="True">
+                <Node name="KundeController.cs" selected="True" />
+              </Node>
+              <Node name="DAL" expanded="True" />
+              <Node name="Logs" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="wwwroot" expanded="True">
+                <Node name="js" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

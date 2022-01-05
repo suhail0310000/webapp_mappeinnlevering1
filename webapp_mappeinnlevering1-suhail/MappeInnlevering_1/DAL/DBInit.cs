@@ -19,19 +19,7 @@ namespace MappeInnlevering_1.Models
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
 
-                //var sted = new Sted { StedsNavn= "Suhail " };
-
-
-                //var datoAvgang1 = "05/11/2021";
-                //var datoAvgang2 = "10/12/2021";
-                //var dato3 = "01/01/2021";
-
-                //var tid_1 = "10:00";
-                //var tid_2 = "13:00";
-                //var tid_3 = "21:00";
-
-                //var land1 = "Tyskland";
-                //var land2 = "Spania";
+               
 
                 //STEDER
                 var Sted1 = new Sted { StedsNavn = "Oslo" };

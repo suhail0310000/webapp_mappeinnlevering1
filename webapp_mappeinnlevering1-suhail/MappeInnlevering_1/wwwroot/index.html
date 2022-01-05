@@ -1,28 +1,11 @@
-﻿<!--<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-    <script src="js/index.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Her er kundene:</h1>
-        <div id="kundene"></div>
-        <a href="lagre.html" class="btn btn-primary">Lagre ny kunde</a>
-    </div>
-</body>
-</html>-->
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <script src="js/index.js"></script>
+    <script src="js/validering.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,15 +56,11 @@
                 <div class="row">
                     <div class="col-md-7 col-md-push-5">
                         <div class="booking-cta">
-                            <h1>Make your reservation</h1>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
-                                ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
-                                Perspiciatis.
-                            </p>
+                            <h1>Bestill din bilett!</h1>
+                            
                         </div>
                     </div>
-                    <div class="col-md-4 col-md-pull-7">
+                    <div class="col-md-5 col-md-pull-7">
                         <div class="booking-form">
 
                             <!-- POPUP FOOOOORM -->
@@ -90,49 +69,23 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                             <h4 class="modal-title" id="exampleModalLabel">Billett funnet etter dine kvalifikasjoner:</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="ferdigOrdreValid()">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-
-
-
-
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="panel panel-default">
                                                         <div class="panel-heading" style="background-color:gold;">
                                                             <h3 class="panel-title"><strong>Reisedetaljer</strong></h3>
                                                         </div>
-
-
-
-
                                                         <div class="panel-body">
                                                             <div class="table-responsive">
                                                                 <table class="table table-condensed">
                                                                     <thead>
-                                                                        <tr">
+                                                                        <tr>
                                                                             <td><strong>Avgang</strong></td>
                                                                             <td class="text-center"><strong>Destinasjon</strong></td>
                                                                             <td class="text-center"><strong>Dato</strong></td>
@@ -141,27 +94,9 @@
                                                                             <td class="text-center"><strong>Student biletter</strong></td>
                                                                             <td class="text-center"><strong>Voksen biletter</strong></td>
                                                                             <td class="text-right"><strong>Total pris:</strong></td>
-                                                                            <!--<td><strong>Fra sted:</strong></td>
-                                                                <td class="text-center"><strong>Til sted:</strong></td>
-                        <td class="text-center"><strong>Tid:</strong></td>
-                        <td class="text-right"><strong>Total pris:</strong></td>-->
-                                                                            <!--</tr>-->
-                                                                    </thead>
+                                                                         
                                                                     <tbody id="bilettTabell">
-                                                                        <!-- foreach ($order->lineItems as $line) or some such thing here -->
-                                                                        <!--<tr>
-                        <td>BS-200</td>
-                        <td class="text-center">$10.99</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">1</td>
-                        <td class="text-center">$10.99</td>
-                        <td class="text-center">1</td>
-                        <td class="text-right">$10.99</td>
-                    </tr>-->
-
-                                                                    </tbody>
-                                                                </table>
+                                                            </table>
                                                             </div>
                                                         </div>
 
@@ -175,13 +110,15 @@
                                                                     <div class="row">
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
-                                                                                <!-- <label for="name">Name</label> --> <input class="form-control" type="text" placeholder="Fornavn">
+                                                                                <!-- <label for="name">Name</label> --> <input class="form-control" id="inpFornavn" type="text" placeholder="Fornavn" onchange="validerFornavn(this.value)">
+                                                                                <span id="feilFornavn" style="color: red"></span>
                                                                             </div>
                                                                             
                                                                         </div>
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
-                                                                                <!-- <label for="name">Name</label> --> <input class="form-control" type="text" placeholder="Etternavn">
+                                                                                <!-- <label for="name">Name</label> --> <input class="form-control" type="text" id="inpEtternavn"placeholder="Etternavn" onchange="validerEtternavn(this.value)">
+                                                                                <span id="feilEtternavn" style="color: red"></span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -190,73 +127,29 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                                     </div>
                                                 </div>
                                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                            ...
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
+                                            <button type="button" type="submit" class="btn btn-primary" onclick="fullførOrdre()">Fullfør bestilling</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-
-
-
-
-
                             <form>
                                 <div class="form-group">
                                     <span class="form-label">Avgang</span>
-                                    <div id="selectAvgang"></div>
+                                    <div id="selectAvgang" onchange="validerAvgang()"></div>
+                                    <div id="feilAvgang" style="color: red"></div>
 
                                 </div>
 
                                 <div class="form-group">
                                     <span class="form-label">Destinasjon</span>
-                                    <div id="selectDestinasjon"></div>
+                                    <div id="selectDestinasjon" onchange="validerDestinasjon()"></div>
                                     <div id="feilDestinasjon" style="color: red"></div>
 
                                 </div>
@@ -264,7 +157,7 @@
 
                                 <div class="form-group">
                                     <span class="form-label">Avreise dato:</span>
-                                    <div id="selectDato"></div>
+                                    <div id="selectDato" onchange="validerDato()"></div>
                                     <div id="feilDato" style="color: red"></div>
 
 
@@ -272,81 +165,49 @@
 
                                 <div class="form-group">
                                     <span class="form-label">Avreise tid:</span>
-                                    <div id="selectTid"></div>
+                                    <div id="selectTid" onchange="validerTid()"></div>
                                     <div id="feilTid" style="color: red"></div>
 
                                 </div>
 
-                                <!--<div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <span class="form-label">Barn</span>
-                                            <div class="form-control-sm-6">
-                                                <input type="number" id="antBarnBiletter">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <span class="form-label">Student</span>
-
-                                            <div class="form-control-sm-6">
-                                                <input type="number" id="antStudentBiletter">
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <span class="form-label">Voksen</span>
-
-                                            <div class="form-control-sm-6">
-                                                <input type="number" id="antVoksenBiletter">
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>-->
-
-
-
+                
                                 <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <span class="form-label">Barn</span>
-                <div class="form-control-sm-6">
-                    <input type="number" id="antBarnBiletter">
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <span class="form-label">Student</span>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Barn</span>
+                                        <div class="form-control-sm-6">
+                                            <input type="number" id="antBarnBiletter">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Student</span>
 
-                <div class="form-control-sm-6">
-                    <input type="number" id="antStudentBiletter">
-                </div>
+                                        <div class="form-control-sm-6">
+                                            <input type="number" id="antStudentBiletter">
+                                        </div>
 
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <span class="form-label">Voksen</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Voksen</span>
 
-                <div class="form-control-sm-6">
-                    <input type="number" id="antVoksenBiletter">
-                </div>
+                                        <div class="form-control-sm-6">
+                                            <input type="number" id="antVoksenBiletter">
+                                        </div>
 
-            </div>
-        </div>
-    </div>
+                                    </div>
+                                </div>
+                            </div>
                                 <div class="form-btn">
 
                                 </div>
                                 <div id="feil" style="color: red"></div>
 
                             </form>
-                            <button class="submit-btn" onclick="beregnPris_HentInfo()" data-toggle="modal" data-target="#exampleModal">Check availability</button>
+                            <button class="submit-btn" onclick="beregnPris_HentInfo()" data-toggle="modal" data-target="#exampleModal" onclick="ferdigOrdreValid()">Check availability</button>
                         </div>
                     </div>
                 </div>
@@ -375,13 +236,6 @@
             background-color: gold;
             color: black;
         }
-
-
-
-
-
-
-
 
 
         .section {
@@ -525,19 +379,6 @@
             }
     </style>
 </body>
-<script>
-    function finalCost() {
-        var roomType = document.getElementById("room_type").value;
-        var roomNum = document.getElementById("room_number").value;
-        var personNum = document.getElementById("person_number").value;
-        var childNum = document.getElementById("child_number").value;
-        var resFacilities = document.getElementById("res_facilities").value;
-
-        var total = (parseInt(roomType) * 10) + ((roomNum) * 2) + ((personNum) * 3) + ((childNum) * 2) + ((resFacilities) * 5)
-
-        document.getElementById("result").innerHTML = total;
-    }</script>
-
 
 </html>
 
